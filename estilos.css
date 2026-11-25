@@ -9,7 +9,11 @@
     --borde: #3a3a3a;
     --exito: #2a9d8f;
     --radio: 10px;
-    --sombra: 0 4px 14px rgba(0, 0, 0, 4.45);
+    --sombra: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body{
@@ -57,7 +61,7 @@ p {
 
 ul, ol {
     padding-left: 1.5rem;
-    margin: 0 0 1rem 1.5rem;
+    margin: 0 0 1rem;
     
 }
 
@@ -75,9 +79,10 @@ li::marker {
 a{
     color: var(--acento);
     text-decoration: none; /* retira el subrayado de los enlaces */
-    &:hover{
-        text-decoration: underline; /* subraya el enlace al pasar el mouse */
-    }
+}
+
+a:hover{
+    text-decoration: underline; /* subraya el enlace al pasar el mouse */
 }
 
 strong{
@@ -126,27 +131,34 @@ nav a{
     padding: .5rem 1rem; /* se utiliza para poder agregar espacio dentro del enlace */
     color: var(--texto-suave);
     border-bottom: 3px solid transparent; 
+}
 
-    &:hover{
-        color: var(--texto)
-    }
+nav a:hover{
+    color: var(--texto);
+}
 
-    &.activo{
-        color: var(--acento)
-    }
+nav a.activo{
+    color: var(--acento);
 }
 
 
 
 .descripcion {
     color: var(--texto-suave);
+    font-size: .95rem;
     margin: 0 0 1rem;
+}
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
 }
 
 .contenido{
     display: grid; /* permite distribuir los elementos en una cuadrícula */
 
-    /* el grid-template-columns permite, en pantallas grid crear
+    /* el grid-template-columns permite, en pantallas grid, crear
     cuadriculas adaptables. 
     En este caso, se crean la cantidad de columnas que quepan en el contenedor,
     con un ancho mínimo de 250px y un ancho máximo de 1fr (una fracción del contenedor 
@@ -154,4 +166,255 @@ nav a{
 
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem; 
+}
+
+article{
+    background: var(--superficie);
+    padding: 1rem;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+section{
+    margin-bottom: 2rem; /* agrega un espacio entre las secciones */
+}
+
+aside{
+    background: var(--superficie);
+    border-left: 4px solid var(--acento);
+    padding: 1rem;
+    align-self: start; /* esto hace que el aside se alinee al inicio del contenedor */
+    border-radius: 0;
+}
+
+footer{
+    background: var(--superficie);
+    color: var(--texto-suave);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border-top: 1px solid var(--borde); /* agrega una línea superior al footer */
+    margin-top: 2rem; /* agrega un espacio entre el footer y el contenido */
+    font-size: .9rem; /* reduce el tamaño de la fuente del footer */
+
+}
+
+/*seccion de componentes a usar */
+
+ol.indice {
+    /* elimina los numeros de la lista para construir los propios */
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    display: grid;
+
+    /* el grid-template-columns permite, en pantallas grid, crear
+    cuadriculas adaptables. */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    counter-reset: tema;
+}
+
+
+ol.indice li {
+    counter-increment: tema;
+    position: relative;
+    margin-bottom: 0;
+}
+
+ol.indice li::before {
+    content: counter(tema);
+    position: absolute;
+    top: .6rem;
+    left: .6rem;
+    z-index: 2;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--acento);
+    color: #fff;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tarjeta {
+    background: var(--fondo);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    overflow: hidden; /* esto hace que el contenido que se salga del contenedor se oculte */
+    transition: transform .2s, border-color .2s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-4px);
+    border-color: var(--acento);
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+
+.tarjeta .cuerpo {
+    padding: 1rem;
+}
+
+
+/* se utilizara la clase .pasos para los html que contengan 
+los pasos de cada tema, para poder enumerarlos y darles un 
+estilo diferente al resto de las listas */
+
+ol.pasos {
+    list-style: none;
+    padding: 0;
+    counter-reset: paso;
+}
+
+ol.pasos li {
+    counter-increment: paso;
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 1rem;
+}
+
+ol.pasos li::before {
+    content: counter(paso);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--acento);
+    color: #fff;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tabla-scroll {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: var(--superficie-2);
+    color: var(--texto);
+    text-transform: uppercase;
+    font-size: .85rem;
+    letter-spacing: .5px;
+    text-align: left;
+    padding: .7rem;
+    border-bottom: 3px solid var(--acento);
+}
+
+td {
+    padding: .7rem;
+    border-bottom: 1px solid var(--borde);
+    color: var(--texto);
+}
+
+/* aplica un color de fondo diferente a las filas pares de la tabla */
+tr:nth-child(even) {
+    background: var(--superficie-2);
+}
+
+tr:hover {
+    background: #333;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radio);
+    display: block;
+}
+
+
+figure {
+    margin: 1rem 0;
+}
+
+figcaption {
+    color: var(--texto-suave);
+    font-size: .9rem;
+    margin-top: .4rem;
+    text-align: center;
+}
+
+
+
+.boton {
+    display: inline-block;
+    background: var(--acento);
+    color: #fff;
+    padding: .6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .2s;
+}
+
+.boton:hover {
+    background: var(--acento-oscuro);
+    text-decoration: none; /* evita el subrayado de a:hover en el boton */
+}
+
+/* Calculadora 1RM */
+.calculadora {
+    background: var(--superficie-2);
+    border-radius: var(--radio);
+    padding: 1rem;
+}
+
+.calculadora label {
+    display: block;
+    margin-bottom: .3rem;
+    color: var(--texto-suave);
+}
+
+.calculadora input {
+    width: 100%;
+    padding: .6rem;
+    margin-bottom: .8rem;
+    background: var(--fondo);
+    color: var(--texto);
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+}
+
+.calculadora input:focus {
+    outline: none;
+    border-color: var(--acento);
+}
+
+#resultado {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--acento);
+    margin-top: .8rem;
+}
+
+
+
+@media (max-width: 800px) {
+  .contenido { grid-template-columns: 1fr; }   /* aside debajo del article */
+  h1 { font-size: 1.8rem; }
+}
+@media (max-width: 600px) {
+  nav ul { flex-direction: column; align-items: stretch; }
+  ol.indice { grid-template-columns: 1fr; }    /* tarjetas en una columna */
 }
