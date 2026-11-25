@@ -173,6 +173,7 @@ article{
     padding: 1rem;
     border-radius: var(--radio);
     box-shadow: var(--sombra);
+    min-width: 0;
 }
 
 section{
@@ -305,6 +306,7 @@ ol.pasos li::before {
 
 table {
     width: 100%;
+    min-width: 500px;
     border-collapse: collapse;
 }
 
