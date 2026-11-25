@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora de 1RM: tutorial de powerlifting para principiantes">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Calculadora de 1RM | Powerlifting para principiantes</title>
+</head>
+<body>
+    <header>
+        <h1>Powerlifting para principiantes</h1>
+        <p>Tutorial de powerlifting: técnica, errores comunes y progresión para empezar en este deporte de fuerza.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="sentadilla.html">Sentadillas</a></li>
+            <li><a href="press-banca.html">Press de Banca</a></li>
+            <li><a href="peso-muerto.html">Peso Muerto</a></li>
+            <li><a href="competencia.html">Competencia</a></li>
+            <li><a class="activo" href="calculadora.html">Calculadora</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="contenido">
+            <article>
+                <h2>Calculadora de 1RM</h2>
+
+                <section id="que-es">
+                    <h3>¿Qué es el RM?</h3>
+                    <p>RM significa <strong>repetición máxima</strong>. Tu <strong>1RM</strong> es el mayor peso que puedes levantar una sola vez con buena técnica.</p>
+                    <p>Sirve para elegir las cargas de tu entrenamiento: en las tablas de progresión de cada tema, los porcentajes se calculan sobre tu 1RM.</p>
+                    <p>Probar tu 1RM real con una repetición es exigente y riesgoso si estás empezando. Por eso se estima a partir de una serie con menos peso y varias repeticiones.</p>
+                </section>
+
+                <section id="formula">
+                    <h3>¿Cómo se calcula?</h3>
+                    <p>Esta calculadora usa la fórmula de Epley:</p>
+                    <p><strong>1RM = peso × (1 + repeticiones / 30)</strong></p>
+                    <p>Por ejemplo, con 80 kg y 5 repeticiones: 80 × (1 + 5 / 30) = 93,3 kg.</p>
+                    <p>Es un cálculo estimado. Funciona mejor con series de pocas repeticiones, hasta unas 10.</p>
+                </section>
+
+                <section id="calculadora">
+                    <h3>Calcula tu 1RM</h3>
+                    <ol class="pasos">
+                        <li>Escribe el peso que levantaste, en kilogramos.</li>
+                        <li>Escribe cuántas repeticiones hiciste con buena técnica.</li>
+                        <li>Pulsa "Calcular" y lee tu 1RM estimado.</li>
+                    </ol>
+                    <div class="calculadora">
+                        <label for="peso">Peso levantado (kg)</label>
+                        <input type="number" id="peso" min="1">
+
+                        <label for="reps">Repeticiones</label>
+                        <input type="number" id="reps" min="1" max="12">
+
+                        <button class="boton" onclick="calcular()">Calcular</button>
+                        <p id="resultado"></p>
+                    </div>
+                </section>
+
+            </article>
+
+            <aside>
+                <h3>Dato rápido</h3>
+                <p>Usa series de 10 repeticiones o menos para una estimación más confiable.</p>
+                <p><a href="#formula">Ver la fórmula</a></p>
+                <p><a href="index.html">Volver al inicio</a></p>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>Evidencia GA6-220501096-AA4-EV01 · SENA · Análisis y desarrollo de software</p>
+    </footer>
+
+    <script src="calculadora.js"></script>
+</body>
+</html>
